@@ -1,79 +1,41 @@
 go to [http://math.robertismo.com/v1/docs](http://math.robertismo.com/v1/docs) for documentation
 
 <div>
-		<h1>Hello, this is the Documentation for Version 1.0 of my math problem generator API.</h1>
-		<p>The root of the endpoint: <a href="http://math.robertismo.com/v1">http://math.robertismo.com/v1</a>, brings you to this documentation page.</p>
-		<p><a href="http://math.robertismo.com/v1/docs">http://math.robertismo.com/v1/docs</a>, also brings you to this documentation page.</p>
-		<br/>
-		<h2>Routes</h2>
-		<p>To use this API is very simple, the route structure is:</p>
-		<p>/ANSWER_MODE/DIFFICULTY/TYPE/AMOUNT</p>
-		<p>or</p>
-		<p>/ANSWER_MODE/any/AMOUNT</p>
-		<br/>
-		<h3>ANSWER_MODE</h3>
-		<ul>
-			<li><i>open</i>(responds with a question and it's answer)</li>
-			<li><i>multi</i>(responds with multiple choice options as well as the question and it's answer.)</li>
-		</ul>
-		<h3>DIFFICULTY</h3>
-		<i>An integer setting the amount of digits the question will use</i>
-		<h3>TYPE</h3>
-		<ul>
-			<li><i>addition</i></li>
-			<li><i>subtraction</i></li>
-			<li><i>multiplication</i></li>
-			<li><i>division</i></li>
-		</ul>
-		<h3>AMOUNT</h3>
-		<i>An integer setting how many questions should be responded</i>
-		<h2>Examples</h2>
-		<ul>
-			<li><a href="http://math.robertismo.com/v1/multi/any/30">http://math.robertismo.com/v1/multi/any/30</a> this responds with 30(max. 50) multiple choice questions of any type.</li>
-			<li><a href="http://math.robertismo.com/v1/open/2/addition/5">http://math.robertismo.com/v1/open/2/addition/5</a> this responds with 5 two-digit addition questions.</li>
-			<li><a href="http://math.robertismo.com/v1/multi/1/division/1">http://math.robertismo.com/v1/multi/1/division/1</a> this responds with a single singular-digit multiple choice division question.</li>
-		</ul>
-	</div>
+	<h1>Hello, this is the Documentation for Version 1.0 of my math problem generator API.</h1>
+	<p>The root of the endpoint: <a href="http://math.robertismo.com/v1">http://math.robertismo.com/v1</a>, brings you to this documentation page.</p>
+	<p><a href="http://math.robertismo.com/v1/docs">http://math.robertismo.com/v1/docs</a>, also brings you to this documentation page.</p>
 	<br/>
-	<h2>Try it for yourself!</h2>
-	<div>
-		try some addition!
-		<button onclick="getQuestion()">get a question</button>
-		<form id="form">
-			<label for="answerbox" id="questionlabel">Your question will appear here.</label>
-			<br/>
-			<input type="number" placeholder="Your answer" name="answerbox" id="answerbox">
-			<input type="submit" value="done!">
-		</form>
-		<p id="result"></p>
-	</div>
-	<script>
-		const endpoint = 'http://math.robertismo.com/v1/open/2/addition/1' 
-		const questionlabel = document.getElementById('questionlabel');
-		const answerbox = document.getElementById('answerbox');
-		const result = document.getElementById('result');
-		const form = document.getElementById('form');
-		let question = false;
-
-		const getQuestion = async () => {
-			const res = await fetch(endpoint);
-			question = (await res.json())[0];
-			questionlabel.innerHTML = question.question.expression
-		}
-		const checkAnswer = (e) => {
-			e.preventDefault();
-			if(question) {
-				const useranswer = parseInt(answerbox.value)
-				if(useranswer === question.question.answer) {
-					result.innerHTML = "correct!"
-				} else {
-					result.innerHTML = "incorrect!"
-				}
-			}
-		}
-		form.addEventListener('submit', checkAnswer)
-	</script>
-
+	<h2>Routes</h2>
+	<p>To use this API is very simple, the route structure is:</p>
+	<p>/ANSWER_MODE/DIFFICULTY/TYPE/AMOUNT</p>
+	<p>or</p>
+	<p>/ANSWER_MODE/any/AMOUNT</p>
+	<br/>
+	<h3>ANSWER_MODE</h3>
+	<ul>
+		<li><i>open</i>(responds with a question and it's answer)</li>
+		<li><i>multi</i>(responds with multiple choice options as well as the question and it's answer.)</li>
+	</ul>
+	<h3>DIFFICULTY</h3>
+	<i>An integer setting the amount of digits the question will use</i>
+	<h3>TYPE</h3>
+	<ul>
+		<li><i>addition</i></li>
+		<li><i>subtraction</i></li>
+		<li><i>multiplication</i></li>
+		<li><i>division</i></li>
+	</ul>
+	<h3>AMOUNT</h3>
+	<i>An integer setting how many questions should be responded</i>
+	<h2>Examples</h2>
+	<ul>
+		<li><a href="http://math.robertismo.com/v1/multi/any/30">http://math.robertismo.com/v1/multi/any/30</a> this responds with 30(max. 50) multiple choice questions of any type.</li>
+		<li><a href="http://math.robertismo.com/v1/open/2/addition/5">http://math.robertismo.com/v1/open/2/addition/5</a> this responds with 5 two-digit addition questions.</li>
+		<li><a href="http://math.robertismo.com/v1/multi/1/division/1">http://math.robertismo.com/v1/multi/1/division/1</a> this responds with a single singular-digit multiple choice division question.</li>
+	</ul>
+</div>
+<br/>
+<p>
 responses are in the form:
 	ARRAY [
 		question:
@@ -91,3 +53,4 @@ responses are in the form:
 				NUMBERS *multiple choice values to use(the answer included).*
 			]
 	]
+</p>
