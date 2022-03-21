@@ -35,7 +35,7 @@ go to [http://math.robertismo.com/v1/docs](http://math.robertismo.com/v1/docs) f
 	</ul>
 </div>
 <br/>
-<p>
+```
 responses are in the form:
 	ARRAY [
 		question:
@@ -53,4 +53,4 @@ responses are in the form:
 				NUMBERS *multiple choice values to use(the answer included).*
 			]
 	]
-</p>
+```
